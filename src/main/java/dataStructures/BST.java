@@ -41,7 +41,7 @@ public class BST {
     private static void inOrder(final Node node) {
         if (node == null) return;
         inOrder(node.left);
-        System.out.println(node.value);
+        System.out.print(node.value + " ");
         inOrder(node.right);
     }
 
@@ -87,5 +87,29 @@ public class BST {
            root.right = deleteNode(root.right, root.value);
        }
         return root;
+    }
+
+    public static void main(String[] args) {
+        BST bst = new BST();
+        bst.insert(113);
+        bst.insert(42);
+        bst.insert(32);
+        bst.insert(4);
+        bst.insert(51);
+        bst.insert(620);
+        bst.insert(71);
+        bst.insert(21);
+        bst.insert(19);
+        bst.insert(100);
+
+        bst.inOrder();
+        System.out.println("\nContém nº 71: "+bst.contains(71));
+        System.out.println("Contém nº 0: "+bst.contains(0));
+
+        System.out.println("#######################");
+
+        bst.deleteNode(71);
+        bst.inOrder();
+        System.out.println("\nContém nº 71: "+bst.contains(71));
     }
 }

@@ -71,7 +71,7 @@ public class LinkedList {
     public Node removeLast() {
         if (this.length==0) return null;
         Node pre = this.head;
-        Node temp = null;
+        Node temp;
 
         while (pre.next != this.tail) {
             pre = pre.next;
@@ -174,5 +174,73 @@ public class LinkedList {
         this.length--;
 
         return temp;
+    }
+
+    public static void main(String[] args) {
+        LinkedList list = new LinkedList("First");
+
+        System.out.println("Initial list:");
+        list.print();
+        list.getHead();
+        list.getTail();
+        list.getLength();
+
+        System.out.println("\nAppending elements:");
+        list.append("Second");
+        list.append("Third");
+        list.print();
+        list.getHead();
+        list.getTail();
+        list.getLength();
+
+        System.out.println("\nPrepending elements:");
+        list.prepend("Zero");
+        list.print();
+        list.getHead();
+        list.getTail();
+        list.getLength();
+
+        System.out.println("\nRemoving first element:");
+        list.removeFirst();
+        list.print();
+        list.getHead();
+        list.getTail();
+        list.getLength();
+
+        System.out.println("\nRemoving last element:");
+        list.removeLast();
+        list.print();
+        list.getHead();
+        list.getTail();
+        list.getLength();
+
+        System.out.println("\nGetting element at index 1:");
+        LinkedList.Node node = list.get(1);
+        System.out.println(node != null ? node.data : "Index out of bounds");
+
+        System.out.println("\nSetting element at index 1:");
+        boolean isSet = list.set(1, "Updated");
+        System.out.println("Set operation successful: " + isSet);
+        list.print();
+
+        System.out.println("\nInserting element at index 1:");
+        boolean isInserted = list.insert(1, "Inserted");
+        System.out.println("Insert operation successful: " + isInserted);
+        list.print();
+
+        System.out.println("\nRemoving element at index 1:");
+        LinkedList.Node removedNode = list.remove(1);
+        System.out.println("Removed element: " + (removedNode != null ? removedNode.data : "Index out of bounds"));
+        list.print();
+        list.getHead();
+        list.getTail();
+        list.getLength();
+
+        System.out.println("\nMaking the list empty:");
+        list.makeEmpty();
+        list.print();
+        list.getHead();
+        list.getTail();
+        list.getLength();
     }
 }

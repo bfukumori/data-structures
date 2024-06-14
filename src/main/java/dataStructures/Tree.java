@@ -20,6 +20,21 @@ public class Tree {
         }
     }
 
+    public int countLeaves() {
+        return countLeaves(root);
+    }
+
+    private int countLeaves(Node node) {
+        if (node == null) {
+            return 0;
+        }
+        if (node.isLeaf()) {
+            return 1;
+        }
+        return countLeaves(node.left) + countLeaves(node.right);
+    }
+
+
     public void insert(int value) {
         Node newNode = new Node(value);
 
@@ -97,5 +112,41 @@ public class Tree {
                 queue.add(currentNode.right);
             }
         }
+    }
+
+    public static void main(String[] args) {
+        Tree tree = new Tree();
+
+        // Inserindo valores na árvore
+        System.out.println("Inserting values into the tree:");
+        tree.insert(10);
+        tree.insert(5);
+        tree.insert(15);
+        tree.insert(3);
+        tree.insert(7);
+        tree.insert(12);
+        tree.insert(18);
+
+        // Exibindo a árvore em diferentes ordens de travessia
+        System.out.println("\nPre-order traversal:");
+        tree.preOrder(); // Esperado: 10 5 3 7 15 12 18
+        System.out.println();
+
+        System.out.println("\nIn-order traversal:");
+        tree.inOrder(); // Esperado: 3 5 7 10 12 15 18
+        System.out.println();
+
+        System.out.println("\nPost-order traversal:");
+        tree.postOrder(); // Esperado: 3 7 5 12 18 15 10
+        System.out.println();
+
+        System.out.println("\nBreadth-first search (BFS):");
+        tree.BFS(); // Esperado: 10 5 15 3 7 12 18
+        System.out.println();
+
+        // Contando o número de folhas na árvore
+        System.out.println("\nNumber of leaves in the tree:");
+        int numberOfLeaves = tree.countLeaves(); // Esperado: 4 (3, 7, 12, 18)
+        System.out.println("Number of leaves: " + numberOfLeaves);
     }
 }

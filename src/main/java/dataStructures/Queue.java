@@ -83,4 +83,50 @@ public class Queue {
             }
         }
     }
+
+    public static void main(String[] args) {
+        // Criação de uma fila com um valor inicial
+        Queue queue = new Queue(1);
+
+        // Imprimindo a fila inicial
+        System.out.println("Initial queue:");
+        queue.printQueue();
+        System.out.println();
+        queue.getFirst();
+        queue.getLast();
+        queue.getLength();
+
+        // Adicionando elementos à fila
+        System.out.println("\nEnqueuing elements:");
+        queue.enqueue(2);
+        queue.enqueue(3);
+        queue.enqueue(4);
+        queue.printQueue();
+        System.out.println();
+        queue.getFirst();
+        queue.getLast();
+        queue.getLength();
+
+        // Removendo o primeiro elemento da fila
+        System.out.println("\nDequeuing an element:");
+        Queue.Node dequeuedNode = queue.dequeue();
+        System.out.println("Dequeued: " + (dequeuedNode != null ? dequeuedNode.value : "null"));
+        queue.printQueue();
+        System.out.println();
+        queue.getFirst();
+        queue.getLast();
+        queue.getLength();
+
+        // Removendo todos os elementos da fila
+        System.out.println("\nDequeuing all elements:");
+        while (!queue.isEmpty()) {
+            dequeuedNode = queue.dequeue();
+            System.out.println("Dequeued: " + (dequeuedNode != null ? dequeuedNode.value : "null"));
+        }
+        queue.printQueue();
+        System.out.println();
+        queue.getFirst();
+        queue.getLast();
+        queue.getLength();
+    }
 }
